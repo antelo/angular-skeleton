@@ -16,6 +16,8 @@ New modules will be created in `modules` folder.
 
 New models and services will be created in `data` folder.
 
+The `shared` folder will includes the  `directive|pipe|components` common between `modules`.
+
 ## Build
 
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
