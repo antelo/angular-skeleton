@@ -1,0 +1,14 @@
+<form class="text-left" [formGroup]="form"  (ngSubmit)="onSubmit()" novalidate>
+  <div class="form-group">
+    <label for="inputEmail">Email</label>
+    <input type="email" formControlName="email" id="inputEmail" class="form-control" placeholder="Email">
+    <app-invalid-feedback controlName="email" errorKey="required">The email field is required</app-invalid-feedback>
+    <app-invalid-feedback controlName="email" errorKey="email">The email field is in invalid format</app-invalid-feedback>
+  </div>
+  <div class="form-group">
+    <label for="inputPassword">Password</label>
+    <input type="password" formControlName="password" id="inputPassword" class="form-control" placeholder="Password">
+    <app-invalid-feedback controlName="password" errorKey="required">The password field is required</app-invalid-feedback>
+  </div>
+  <app-submit-button [form]="form" [loading]="loading" [block]="true">Sign in</app-submit-button>
+</form>

@@ -1,0 +1,4 @@
+<button type="submit" class="btn btn-primary" [disabled]="isDisabled" [ngClass]="{'btn-block': block}">
+  <app-loader class="pull-left mr-1" *ngIf="loading"></app-loader>
+  <span><ng-content></ng-content></span>
+</button>
