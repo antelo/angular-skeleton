@@ -13,6 +13,7 @@ import { NoAuthGuard } from './guards/no-auth.guard';
 import { HttpMockApiInterceptor } from './mock/http-mock-api.interceptor';
 import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
 import { ModalComponent } from './layout/modal/modal.component';
+import { GlobalErrorHandler } from './handlers/global-error.handler';
 
 
 
@@ -27,6 +28,7 @@ import { ModalComponent } from './layout/modal/modal.component';
   providers: [
     AuthGuard,
     NoAuthGuard,
+    { provide: ErrorHandler, useClass: GlobalErrorHandler },
     { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: HttpMockApiInterceptor, multi: true },
   ],
