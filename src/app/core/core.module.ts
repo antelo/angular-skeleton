@@ -1,4 +1,4 @@
-import { NgModule, Optional, SkipSelf } from '@angular/core';
+import { ErrorHandler, NgModule, Optional, SkipSelf } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AuthLayoutComponent } from './layout/auth-layout/auth-layout.component';
 import { ContentLayoutComponent } from './layout/content-layout/content-layout.component';
@@ -11,23 +11,28 @@ import { TokenInterceptor } from './interceptors/token.interceptor';
 import { AuthGuard } from './guards/auth.guard';
 import { NoAuthGuard } from './guards/no-auth.guard';
 import { HttpMockApiInterceptor } from './mock/http-mock-api.interceptor';
+import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
+import { ModalComponent } from './layout/modal/modal.component';
+import { GlobalErrorHandler } from './handlers/global-error.handler';
 
 
 
 @NgModule({
-  declarations: [AuthLayoutComponent, ContentLayoutComponent, HeaderComponent, FooterComponent],
+  declarations: [AuthLayoutComponent, ContentLayoutComponent, HeaderComponent, FooterComponent, ModalComponent],
   imports: [
     CommonModule,
     RouterModule,
-    HttpClientModule
+    HttpClientModule,
+    NgbModalModule
   ],
   providers: [
     AuthGuard,
     NoAuthGuard,
+    { provide: ErrorHandler, useClass: GlobalErrorHandler },
     { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: HttpMockApiInterceptor, multi: true },
   ],
-  exports: [AuthLayoutComponent, ContentLayoutComponent]
+  exports: [AuthLayoutComponent, ContentLayoutComponent, ModalComponent]
 })
 export class CoreModule {
   constructor(@Optional() @SkipSelf() parentModule: CoreModule) {
