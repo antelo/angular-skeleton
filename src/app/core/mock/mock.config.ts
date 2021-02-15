@@ -3,27 +3,6 @@ import { Observable, of } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Auth } from '../models/auth';
 
-// import * as data from '../../assets/mock-data/countries.json';
-// import {Country} from '../model/country';
-
-// let countries: any[] = (data as any).default;
-// const getCountries = (request: HttpRequest<any>) => {
-//   return of(new HttpResponse({
-//     status: 200, body: countries
-//   }));
-// };
-// const getCountry = (request: HttpRequest<any>) => {
-//   const id = extractIdPathParamFromUrl(request);
-//   const country = countries.find(c => c.id === id);
-//   return of(new HttpResponse({
-//     status: 200, body: country
-//   }));
-// };
-// const extractIdPathParamFromUrl = (request: HttpRequest<any>) => {
-//   const requestUrl = new URL(request.url);
-//   return requestUrl.pathname.split('/').pop();
-// };
-
 
 export class MockHandler {
 
