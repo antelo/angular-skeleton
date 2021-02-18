@@ -1,7 +1,5 @@
-import { HttpRequest, HttpResponse } from '@angular/common/http';
-import { Observable, of } from 'rxjs';
+import { HttpRequest } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
-import { Auth } from '../models/auth';
 
 
 export class MockHandler {
