@@ -4,7 +4,7 @@ import { AuthLayoutComponent } from './layout/auth-layout/auth-layout.component'
 import { ContentLayoutComponent } from './layout/content-layout/content-layout.component';
 import { HeaderComponent } from './layout/header/header.component';
 import { FooterComponent } from './layout/footer/footer.component';
-import { RouterModule } from '@angular/router';
+import { RouteReuseStrategy, RouterModule } from '@angular/router';
 import { throwIfAlreadyLoaded } from './guards/module-import.guard';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokenInterceptor } from './interceptors/token.interceptor';
@@ -14,6 +14,7 @@ import { HttpMockApiInterceptor } from './mock/http-mock-api.interceptor';
 import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
 import { ModalComponent } from './layout/modal/modal.component';
 import { GlobalErrorHandler } from './handlers/global-error.handler';
+import { CacheRouteReuseStrategy } from './strategies/cache-route-reuse.strategy';
 
 
 
@@ -31,6 +32,7 @@ import { GlobalErrorHandler } from './handlers/global-error.handler';
     { provide: ErrorHandler, useClass: GlobalErrorHandler },
     { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: HttpMockApiInterceptor, multi: true },
+    { provide: RouteReuseStrategy, useClass: CacheRouteReuseStrategy }
   ],
   exports: [AuthLayoutComponent, ContentLayoutComponent, ModalComponent]
 })
